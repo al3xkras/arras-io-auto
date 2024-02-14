@@ -1,0 +1,20 @@
+{
+  "name": "Getting Started Example",
+  "description": "Build an Extension!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting", "debugger"],
+  "action": {
+    "default_popup": "resources/html/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://arras.io/*"],
+      "js": ["main.js"]
+    }
+  ],
+  "options_page": "resources/html/options.html"
+}
