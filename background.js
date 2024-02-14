@@ -19,7 +19,7 @@ chrome.storage.sync.get(["upgrade_sequence", "enabled", "choice"], (value) =>{
     }
 });
 
-chrome.storage.sync.set({ "last_choice": 0 });
+chrome.storage.sync.set({ "last_choice": -1 });
 
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if(message.keySequence){

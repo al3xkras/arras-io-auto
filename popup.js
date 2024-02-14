@@ -4,19 +4,30 @@ const parse_sequence = (seq)=>{
     return seq.trim("\n").split("\n")
 }
 
-const input_seq = document.getElementById("sequence")
 const checkbox_enabled = document.getElementById("enabled")
 const choice = document.getElementById("choice")
+const current_id = document.getElementById("current_id")
 
-chrome.storage.sync.get(["upgrade_sequence","enabled","choice"], (value) =>{
-    input_seq.value = value["upgrade_sequence"].join("\n")
-    checkbox_enabled.checked = value["enabled"]
-    choice.value = value["choice"]
+const input_seq = CodeMirror.fromTextArea(document.getElementById("sequence"), {
+    lineNumbers: true,
+    matchBrackets: true,
+    width: 150
 });
 
-input_seq.addEventListener("input", (event) => {
-    chrome.storage.sync.set({ "upgrade_sequence": parse_sequence(event.target.value)});
+input_seq.setOption('theme', 'cobalt');
+input_seq.setSize(350, 150);
+
+chrome.storage.sync.get(["upgrade_sequence","enabled","choice", "last_choice"], (value) =>{
+    input_seq.setValue(value["upgrade_sequence"].join("\n"))
+    checkbox_enabled.checked = value["enabled"]
+    choice.value = value["choice"]
+    current_id.innerHTML = "Current ID: "+Math.max(1, (value["last_choice"] || 0) + 1)
+});
+
+input_seq.on("change", () => {
+    chrome.storage.sync.set({ "upgrade_sequence": parse_sequence(input_seq.getValue())});
 })
+
 checkbox_enabled.addEventListener('change', (event) => {
     chrome.storage.sync.set({ "enabled": !!event.currentTarget.checked });
 })

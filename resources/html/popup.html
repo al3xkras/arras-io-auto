@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="../css/button.css" />
+    <script type="text/javascript" src="/resources/codemirror_min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/resources/codemirror_min.css"/>
+    <title>arras-io-auto</title>
   </head>
   <body>
     <h3>arras-io-auto</h3>
@@ -13,9 +15,11 @@
     <br/>
     <label>
       List of upgrades:
-      <textarea id="sequence" style="width: 350px; height: 100px; overflow: visible"></textarea>
+      <textarea id="sequence" style="font-size: 14px;"></textarea>
     </label>
     <br/>
+    <br/>
+    <label id="current_id"></label>
     <br/>
     <label for="choice">Choice:</label>
     <select id="choice">
