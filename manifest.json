@@ -1,6 +1,6 @@
 {
-  "name": "Getting Started Example",
-  "description": "Build an Extension!",
+  "name": "Arras.io auto",
+  "description": "Automatically inputs your Arras.io setup on respawn",
   "version": "1.0",
   "manifest_version": 3,
   "background": {
@@ -15,6 +15,5 @@
       "matches": ["https://arras.io/*"],
       "js": ["main.js"]
     }
-  ],
-  "options_page": "resources/html/options.html"
+  ]
 }

@@ -1,24 +1,18 @@
-// Initialize button with users' preferred color
-const changeColor = document.getElementById('changeColor');
+chrome.runtime.connect({ name: "popup" });
 
-chrome.storage.sync.get('color', ({ color }) => {
-  changeColor.style.backgroundColor = color;
+const input_seq = document.getElementById("sequence")
+const checkbox_enabled = document.getElementById("enabled")
+
+chrome.storage.sync.get("upgrade_sequence", (value) =>{
+    input_seq.value = value["upgrade_sequence"]
+});
+chrome.storage.sync.get("enabled", (value) =>{
+    checkbox_enabled.checked = value["enabled"]
 });
 
-// When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener('click', async () => {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    func: setPageBackgroundColor
-  });
-});
-
-// The body of this function will be executed as a content script inside the
-// current page
-function setPageBackgroundColor() {
-  chrome.storage.sync.get('color', ({ color }) => {
-    document.body.style.backgroundColor = color;
-  });
-}
+input_seq.addEventListener("input", (event) => {
+    chrome.storage.sync.set({ "upgrade_sequence": event.target.value });
+})
+checkbox_enabled.addEventListener('change', (event) => {
+    chrome.storage.sync.set({ "enabled": !!event.currentTarget.checked });
+})
