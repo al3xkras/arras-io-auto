@@ -6,13 +6,25 @@
   <body>
     <h3>arras-io-auto</h3>
     <label>
-      Upgrade sequence:
-      <input id="sequence" type="text">
-    </label>
-    <label>
       Enabled
       <input id="enabled" type="checkbox" checked>
     </label>
+    <br/>
+    <br/>
+    <label>
+      List of upgrades:
+      <textarea id="sequence" style="width: 350px; height: 100px; overflow: visible"></textarea>
+    </label>
+    <br/>
+    <br/>
+    <label for="choice">Choice:</label>
+    <select id="choice">
+      <option selected>sequential</option>
+      <option>random</option>,
+    </select>
+    <div class="footer">
+      <button type="button" onclick="window.close();" hidden>close</button>
+    </div>
     <script src="../../popup.js"></script>
   </body>
 </html>

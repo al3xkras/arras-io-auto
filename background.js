@@ -1,18 +1,25 @@
-const def_seq = "yyyy1111222233334444"
-const def_enabled = true
 
-chrome.storage.sync.get("upgrade_sequence", (value) =>{
+const def_seq = ["kyu122333344444444555555556666666677778888990"]
+const def_enabled = true
+const def_choice = 1
+
+
+chrome.storage.sync.get(["upgrade_sequence", "enabled", "choice"], (value) =>{
     const seq = value["upgrade_sequence"]
-    if (typeof seq !== "string") {
+    if (!seq instanceof Array) {
         chrome.storage.sync.set({ "upgrade_sequence": def_seq });
     }
-});
-chrome.storage.sync.get("enabled", (value) =>{
     const enabled = value["enabled"]
     if (typeof enabled !== "boolean") {
         chrome.storage.sync.set({ "enabled": def_enabled });
     }
+    const choice = value["choice"]
+    if (typeof choice !== "string") {
+        chrome.storage.sync.set({ "choice": def_choice });
+    }
 });
+
+chrome.storage.sync.set({ "last_choice": 0 });
 
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if(message.keySequence){
