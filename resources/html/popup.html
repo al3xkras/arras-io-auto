@@ -3,23 +3,36 @@
   <head>
     <script type="text/javascript" src="/resources/codemirror_min.js"></script>
     <link rel="stylesheet" type="text/css" href="/resources/codemirror_min.css"/>
+    <link rel="stylesheet" type="text/css" href="/resources/bootstrap-min.css"/>
+    <style>
+      .CodeMirror {
+        font-family: Arial, monospace;
+        font-size: 11px;
+      }
+    </style>
     <title>arras-io-auto</title>
   </head>
-  <body>
-    <h3>arras-io-auto</h3>
+  <body style="width: 350px; padding: 7px;">
+
+    <div class="d-flex flex-row align-items-top" style="width: 300px">
+      <img src="/images/icon.png" width="512" height="508" style="width: 32px; height: 32px" alt="">
+
+      <h6 style="width: fit-content; margin-left: 6px;">arras-io-auto</h6>
+    </div>
+    <br/>
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="enabled" checked>
+      <label class="form-check-label" for="enabled">
+        Enabled
+      </label>
+    </div>
+    <br/>
     <label>
-      Enabled
-      <input id="enabled" type="checkbox" checked>
+      List of setups:
+      <textarea id="sequence"></textarea>
     </label>
-    <br/>
-    <br/>
-    <label>
-      List of upgrades:
-      <textarea id="sequence" style="font-size: 14px;"></textarea>
-    </label>
-    <br/>
-    <br/>
-    <label id="current_id"></label>
+    <label id="current_id" style="font-size: 11px"></label>
     <br/>
     <label for="choice">Choice:</label>
     <select id="choice">

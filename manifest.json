@@ -8,12 +8,16 @@
   },
   "permissions": ["storage", "activeTab", "scripting", "debugger"],
   "action": {
-    "default_popup": "resources/html/popup.html"
+    "default_popup": "resources/html/popup.html",
+    "default_icon": "images/icon.png"
   },
   "content_scripts": [
     {
       "matches": ["https://arras.io/*"],
       "js": ["main.js"]
     }
-  ]
+  ],
+  "icons": {
+    "128": "images/icon.png"
+  }
 }
