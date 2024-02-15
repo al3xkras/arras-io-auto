@@ -20,3 +20,5 @@ A Chrome extension that automatically inputs your Arras.io builds on respawn.
 - Choice: [`"sequential"` / `"random"`] : choose next build index in sequential/random order.
 
 #### Preview:
+https://github.com/al3xkras/arras-io-auto/assets/62184786/a1b3174c-0b06-40d5-bcdd-a21638e4116b
+
